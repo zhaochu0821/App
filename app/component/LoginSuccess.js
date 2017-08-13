@@ -36,7 +36,7 @@ export default class LoginSuccess extends React.Component {
 			<TouchableOpacity
 				//onPress = {this.toFirst.bind(this)}
 				>
-					<Text style={{ marginLeft: 40, color: "black", fontSize: 26 }}> {this.props.myname}</Text>
+					<Text style={{ marginLeft: 40, color: "black", fontSize: 26 }}> {this.props.logNmae}</Text>
 				</TouchableOpacity>
 
 			</View>

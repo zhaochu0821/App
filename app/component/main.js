@@ -20,7 +20,7 @@ var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 import CustomNavigation from '../util/CustomNavigation'
-
+import EditView from './EditView';
 import FirstPageComponent from './FirstPageComponent';
 import LoginSuccess from './LoginSuccess';
 export default class LoginActivity extends Component {
@@ -31,6 +31,7 @@ export default class LoginActivity extends Component {
       myname:'刘成',
       age:28,
        id: 2,
+         userName : '',
         };
   
   }
@@ -55,6 +56,10 @@ export default class LoginActivity extends Component {
 
 
      <View style={{marginTop:80}}>
+      <EditView     underlineColorAndroid='transparent' name='输入用户名/注册手机号'
+      
+        onChangeText={(text) => this.setState({userName: text})}
+                    />
      <View style={LoginStyles.TextInputView}>
        <TextInput   style={LoginStyles.TextInput}    underlineColorAndroid='transparent' placeholder='输入用户名/注册手机号' 
        onChangeText={(text) => this.setState({user: text})}
@@ -108,6 +113,7 @@ export default class LoginActivity extends Component {
          component : LoginSuccess,
            params : {
               id: this.state.id,
+               'logNmae': this.state.userName,
             }
        })
      

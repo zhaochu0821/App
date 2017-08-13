@@ -1,4 +1,4 @@
-# elm-react-native
+<!--# elm-react-native
 
 ![cover](screenshots/cover.png)
 
@@ -46,4 +46,4 @@ react-native run-ios
 
 ## License
 
-[**The MIT License**](http://opensource.org/licenses/MIT).
+[**The MIT License**](http://opensource.org/licenses/MIT).-->
