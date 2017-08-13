@@ -13,19 +13,24 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+
   InteractionManager
 } from 'react-native';
 var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 import CustomNavigation from '../util/CustomNavigation'
+
+import FirstPageComponent from './FirstPageComponent';
 import LoginSuccess from './LoginSuccess';
 export default class LoginActivity extends Component {
   constructor(props) {
     super(props);
      this.state = {     
-    userName : '',
-    password : '',     
+     title :"title哈哈",
+      myname:'刘成',
+      age:28,
+       id: 2,
         };
   
   }
@@ -51,22 +56,30 @@ export default class LoginActivity extends Component {
 
      <View style={{marginTop:80}}>
      <View style={LoginStyles.TextInputView}>
-       <TextInput   style={LoginStyles.TextInput}    underlineColorAndroid='transparent' placeholder='输入用户名/注册手机号' onChangeText={(text) => {
-                    this.setState({ userName:text })
-        }}/>
+       <TextInput   style={LoginStyles.TextInput}    underlineColorAndroid='transparent' placeholder='输入用户名/注册手机号' 
+       onChangeText={(text) => this.setState({user: text})}
+        />
          </View>
           <View style={LoginStyles.TextInputView}>
-       <TextInput    placeholder='输入密码'   style={LoginStyles.TextInput}  secureTextEntry={true}  underlineColorAndroid='transparent'  onChangeText={(text) => {
-          
-             this.setState({ password:text })
-        }}/>
+       <TextInput   
+        placeholder='输入密码' 
+          style={LoginStyles.TextInput}  
+          secureTextEntry={true}  
+          underlineColorAndroid='transparent' 
+           //onChangeText={(text) => { this.setState({ password:text })}}
+              onChangeText={(text) =>
+                this.setState({ text })
+              }
+            
+           
+             />
          </View>
 	<TouchableOpacity onPress={this.onLoginSuccess.bind(this)}>
           <View style={LoginStyles.loginTextView}  >
         <Text style={LoginStyles.loginText} >登录</Text>
         </View>
           </TouchableOpacity>
-        <Text style={{color:"#4A90E2",textAlign:'center',marginTop:10}} >忘记密码？</Text>
+        <Text style={{color:"#4A90E2",textAlign:'center',marginTop:10}} >{this.state.myname}</Text>
       </View>
      </View>
       </View>
@@ -86,22 +99,37 @@ export default class LoginActivity extends Component {
     }
 
   //跳转到第二个页面去
-   onLoginSuccess(){  
+  
+   onLoginSuccess(){
+     const { navigator } = this.props;
 
-      InteractionManager.runAfterInteractions(() =>{
-            const {navigator} = this.props;
-            navigator.push({
-                component: LoginSuccess,
-                name: 'LoginSuccess',
-                passProps: {...this.props,
-                  'logName': this.state.userName,
-                  'powd':this.state.password, 
-                }
-          })    
-        });
-   
+     navigator.push({
+         name : 'LoginSuccess',
+         component : LoginSuccess,
+           params : {
+              id: this.state.id,
+            }
+       })
+     
+
    }
 }
+//    onLoginSuccess(){  
+
+//       InteractionManager.runAfterInteractions(() =>{
+//             const {navigator} = this.props;
+//             navigator.push({
+//                 component: LoginSuccess,
+//                 name: 'LoginSuccess',
+//                 passProps: {...this.props,
+//                   'userName': 121212,
+//                   //'powd':this.state.password, 
+//                 }
+//           })    
+//         });
+   
+//    }
+// }
 
 
 const LoginStyles = StyleSheet.create({

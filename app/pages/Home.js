@@ -59,6 +59,7 @@ export default class HomePage extends Component {
         onRequestClose: false,
            visible: false,
         transparent: true,
+        id:2
       }
 
       this.SEARCH_BOX_Y = px2dp(isIOS?48:43)
@@ -193,10 +194,13 @@ export default class HomePage extends Component {
       this.setState({isRefreshing: false});
     }, 2000)
   }
-  pushDetails = ()=>{
+  pushDetails(){
         this.props.navigator.push({
-             component:First
+             component:First,
+               params: {
+                    id: 2,}
          })
+       
     }
 
   render(){

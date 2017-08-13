@@ -77,6 +77,7 @@ export default class First extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.toSecond.bind(this)}>
                     <Text style={{ fontSize: 26, }}>进入子页面</Text>
+                       <Text style={{ fontSize: 26, }}>111{this.props.id}</Text>
                 </TouchableOpacity>
                 
             </View>
